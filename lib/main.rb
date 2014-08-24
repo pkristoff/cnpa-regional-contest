@@ -5,11 +5,13 @@ require 'fileutils'
 require 'date'
 
 puts ARGV
+puts "that was argV"
 ARGV.each do|a|
+  puts "xxx"
   puts "Argument: #{a}"
 end
 
-configFile = ARGV[1]
+configFile = ARGV[0]
 
 
 source_dir = nil
@@ -17,6 +19,12 @@ age_in_months = 24
 longest_side_size=1024
 
 config = {}
+
+Dir.chdir('.') do |path|
+
+  puts "current path #{path}"
+
+  end
 
   lines = IO.readlines(configFile)
   lines.each do |line|
