@@ -1,4 +1,6 @@
 $LOAD_PATH.unshift File.dirname($0)
+require File.expand_path(File.dirname(__FILE__) + '/people_files')
+require File.expand_path(File.dirname(__FILE__) + '/image_files')
 require File.expand_path(File.dirname(__FILE__) + '/image_file')
 require File.expand_path(File.dirname(__FILE__) + '/directory_info')
 require 'fileutils'
@@ -60,6 +62,8 @@ Dir.chdir(directory_info.testdata_dir) do |path|
   lines = IO.readlines(directory_info.exiftool_info_file)
   people_files.add_people(lines)
 
+  people_files.set_random_numbers()
+  puts "================ randomize people done =================="
   people_files.dump(config)
   puts "================ init done =================="
   people_files.update(config)
