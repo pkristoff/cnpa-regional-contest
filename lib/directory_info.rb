@@ -20,9 +20,6 @@ class DirectoryInfo
   def clean_up_previous_run
 
 
-    unless File.exist?(@orig_image_dir_txt)
-      Dir.mkdir(@orig_image_dir_txt)
-    end
     unless File.exist?(@testdata_dir)
       Dir.mkdir(@testdata_dir)
     end

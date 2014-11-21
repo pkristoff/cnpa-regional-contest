@@ -1,19 +1,15 @@
 $LOAD_PATH.unshift File.dirname($0)
-require File.expand_path(File.dirname(__FILE__) + '/people_files')
-require File.expand_path(File.dirname(__FILE__) + '/image_files')
 require File.expand_path(File.dirname(__FILE__) + '/image_file')
 require File.expand_path(File.dirname(__FILE__) + '/directory_info')
 require 'fileutils'
 require 'date'
 
 puts ARGV
-puts "that was argV"
 ARGV.each do|a|
-  puts "xxx"
   puts "Argument: #{a}"
 end
 
-configFile = ARGV[0]
+configFile = ARGV[1]
 
 
 source_dir = nil
@@ -21,12 +17,6 @@ age_in_months = 24
 longest_side_size=1024
 
 config = {}
-
-Dir.chdir('.') do |path|
-
-  puts "current path #{path}"
-
-  end
 
   lines = IO.readlines(configFile)
   lines.each do |line|
@@ -62,8 +52,6 @@ Dir.chdir(directory_info.testdata_dir) do |path|
   lines = IO.readlines(directory_info.exiftool_info_file)
   people_files.add_people(lines)
 
-  people_files.set_random_numbers()
-  puts "================ randomize people done =================="
   people_files.dump(config)
   puts "================ init done =================="
   people_files.update(config)
